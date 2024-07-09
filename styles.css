@@ -1,0 +1,336 @@
+/*
+====================================================================
+Designing mobile first and then adapting to tablets and desktops.
+====================================================================
+*/
+
+/*
+==================================
+CSS reset START
+==================================
+*/
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+/*
+==================================
+CSS reset END
+==================================
+*/
+
+/*
+==================================
+GRID AREAS styles START
+==================================
+*/
+body {
+    font-family: "Dosis", sans-serif;
+    color: #1e4040;
+    font-weight: 400;
+}
+
+.outer-grid {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 70px 1fr;
+    grid-template-columns: 90px 1fr;
+    grid-template-areas:
+        "head head"
+        "inner-grid inner-grid";
+}
+
+.inner-grid {
+    display: grid;
+    overflow-y: scroll;
+    grid-area: inner-grid;
+    grid-template-rows: 1fr auto 60px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "main main"
+        "side-bar side-bar"
+        "footer footer";
+}
+/*
+==================================
+GRID AREAS styles END
+==================================
+*/
+
+/*
+==================================
+HEADER styles START
+==================================
+*/
+header {
+    grid-area: head;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e4040;
+    color: #71d99e;
+}
+
+.left-panel {
+    display: flex;
+    padding: 20px;
+}
+
+.fa-solid.fa-bars {
+    align-self: center;
+    margin-right: 20px;
+}
+
+.right-panel {
+    display: flex;
+    padding: 20px;
+}
+
+.header-link-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.header-link-container a {
+    color: #71d99e;
+}
+/*
+==================================
+HEADER styles END
+==================================
+*/
+
+/*
+==================================
+LEFT NAVIGATION styles START
+==================================
+*/
+nav {
+    grid-area: nav;
+    border-right: solid 1px lightgrey;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+nav a {
+    color: #1e4040;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.nav-link {
+    margin: 10px;
+}
+/*
+==================================
+LEFT NAVIGATION styles END
+==================================
+*/
+
+/*
+==================================
+MAIN CONTENT AREA styles START
+==================================
+*/
+main {
+    grid-area: main;
+    padding: 40px;
+}
+
+.main-content-area h3 {
+    padding-bottom: 20px;
+    font-weight: 700;
+}
+
+.main-content-area p {
+    padding-bottom: 20px;
+}
+
+.main-pictures-container {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 0.75fr 0.1fr 1fr  0.1fr 0.75fr;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.main-pictures-container img {
+    border-radius: 10px;
+    box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
+}
+
+.image-1, .image-2, .image-3 {
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.image-1 {
+    max-width: 100%;
+    height: auto;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    z-index: 0;
+    transform: rotate(-3deg);
+}
+
+.image-2 {
+    max-width: 100%;
+    height: auto;
+    grid-column-start: 2;
+    grid-column-end: 5;
+    z-index: 1;
+}
+
+.image-3 {
+    max-width: 100%;
+    height: auto;
+    grid-column-start: 4;
+    grid-column-end: 6;
+    z-index: 0;
+    transform: rotate(3deg);
+}
+/*
+==================================
+MAIN CONTENT AREA styles END
+==================================
+*/
+
+/*
+==================================
+RIGHT SIDEBAR styles START
+==================================
+*/
+aside {
+    grid-area: side-bar;
+    border-top: solid 1px lightgrey;
+    padding: 40px;
+}
+
+.sidebar-area h3 {
+    padding-bottom: 20px;
+    font-weight: 700;
+}
+
+.sidebar-area p {
+    padding-bottom: 20px;
+}
+
+.sidebar-picture-container img {
+    width: 95%;
+    height: auto;
+    box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
+    border-radius: 10px;
+}
+/*
+==================================
+RIGHT SIDEBAR styles END
+==================================
+*/
+
+/*
+==================================
+FOOTER styles START
+==================================
+*/
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: footer;
+    color: #71d99e;
+    background-color: #1e4040;
+}
+/*
+==================================
+FOOTER styles END
+==================================
+*/
+
+/*
+==================================
+JAVASCRIPT toggle classes START
+==================================
+*/
+.hide-nav {
+    display: none;
+}
+
+.outer-grid-expanded {
+    grid-template-areas: 
+    "head head"
+    "nav inner-grid";
+}
+/*
+==================================
+JAVASCRIPT toggle classes END
+==================================
+*/
+
+/*
+==================================
+RESPONSIVE styles START
+==================================
+*/
+@media 
+    only screen 
+    and (min-width: 576px)
+{ 
+    .outer-grid {
+        display: grid;
+        height: 100vh;
+        grid-template-rows: 70px 1fr;
+        grid-template-columns: 90px 1fr;
+        grid-template-areas:
+            "head head"
+            "nav inner-grid";
+    }
+
+    nav {
+        display: flex !important;
+    }
+
+    .fa-solid.fa-bars {
+        display: none !important;
+    }
+
+    aside {
+        border-top: solid 1px lightgrey;
+    }
+}
+
+@media 
+    only screen 
+    and (min-width: 992px)
+{
+    .inner-grid {
+        display: grid;
+        grid-area: inner-grid;
+        grid-template-rows: 1fr 60px;
+        grid-template-columns: minmax(auto, 700px) 1fr;
+        grid-template-areas:
+            "main side-bar"
+            "footer footer";
+    }
+
+    aside {
+        border-left: solid 1px lightgrey;
+        max-width: 450px;
+    }
+}
+/*
+==================================
+RESPONSIVE styles END
+==================================
+*/
